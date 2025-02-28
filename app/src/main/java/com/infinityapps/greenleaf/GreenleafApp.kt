@@ -65,6 +65,7 @@ fun GreenleafApp(
     navController: NavHostController = rememberNavController()
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = backStackEntry?.destination?.route
 
     GreenLeafTheme {
         Scaffold(
@@ -83,7 +84,7 @@ fun GreenleafApp(
             ) {
                 composable<Signup> {
                     SignupScreen(
-                        onSignupClick = { navController.navigate(route = Home) }
+                        onSignupClick = { navController.navigate(Home) }
                     )
                 }
                 composable<Home> {

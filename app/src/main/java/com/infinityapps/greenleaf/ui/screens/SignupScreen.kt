@@ -79,6 +79,7 @@ fun SignupScreen(modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Preview(showBackground = true)
+@Preview(showBackground = true, device = "spec:width=411dp,height=891dp,dpi=420,orientation=landscape",)
 @Composable
 fun SignupScreenPreview() {
     GreenLeafTheme {

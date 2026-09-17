@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">GreenLeaf</string>
+    <string name="create_account">Create account</string>
+    <string name="track_spending_together">Track spending together</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="at_least_8_characters">At least 8 characters</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>

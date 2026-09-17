@@ -12,9 +12,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.AndroidUiModes.UI_MODE_NIGHT_YES
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.infinityapps.greenleaf.R
 import com.infinityapps.greenleaf.ui.theme.GreenLeafTheme
 
 @Composable
@@ -30,10 +32,10 @@ fun SignupScreen(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxSize()
     ) {
         Text(
-            text = "Create account"
+            text = stringResource(R.string.create_account)
         )
         Text(
-            text = "Track spending together"
+            text = stringResource(R.string.track_spending_together)
         )
         Row(
             modifier = Modifier,
@@ -41,37 +43,37 @@ fun SignupScreen(modifier: Modifier = Modifier) {
         ) {
             OutlinedTextField(
                 state = firstNameState,
-                label = { Text("First Name") },
+                label = { Text(stringResource(R.string.first_name)) },
                 modifier = Modifier.weight(1f)
             )
             OutlinedTextField(
                 state = lastNameState,
-                label = { Text("Last Name") },
+                label = { Text(stringResource(R.string.last_name)) },
                 modifier = Modifier.weight(1f)
             )
         }
         OutlinedTextField(
             state = emailState,
-            label = { Text("Email") }
+            label = { Text(stringResource(R.string.email)) }
         )
         OutlinedTextField(
             state = passwordState,
-            label = { Text("Password") }
+            label = { Text(stringResource(R.string.password)) }
         )
         Text(
-            text = "At least 8 characters"
+            text = stringResource(R.string.at_least_8_characters)
         )
         OutlinedTextField(
             state = confirmPasswordState,
-            label = { Text("Confirm Password") }
+            label = { Text(stringResource(R.string.confirm_password)) }
         )
         Button(
             onClick = {}
         ) {
-            Text("Create Account")
+            Text(stringResource(R.string.create_account))
         }
         Text(
-            text = "Already have an account?"
+            text = stringResource(R.string.already_have_an_account)
         )
     }
 
@@ -79,7 +81,7 @@ fun SignupScreen(modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Preview(showBackground = true)
-@Preview(showBackground = true, device = "spec:width=411dp,height=891dp,dpi=420,orientation=landscape",)
+@Preview(showBackground = true, device = "spec:width=411dp,height=891dp,dpi=420,orientation=landscape")
 @Composable
 fun SignupScreenPreview() {
     GreenLeafTheme {

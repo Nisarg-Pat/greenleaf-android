@@ -9,4 +9,7 @@
     <string name="at_least_8_characters">At least 8 characters</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="already_have_an_account">Already have an account? Login</string>
+    <string name="login_to">Login to Greenleaf</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="login">Login</string>
 </resources>

@@ -5,9 +5,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -17,6 +21,9 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.AndroidUiModes.UI_MODE_NIGHT_YES
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,7 +44,10 @@ fun SignupScreen(
 
     Column(
         modifier = modifier.fillMaxSize()
-            .padding(horizontal = 24.dp, vertical = 32.dp)
+            .verticalScroll(rememberScrollState())
+            .imePadding()
+            .padding(horizontal = 24.dp, vertical = 32.dp),
+        verticalArrangement = Arrangement.Center
     ) {
         Text(
             text = stringResource(R.string.create_account),
@@ -56,28 +66,48 @@ fun SignupScreen(
             OutlinedTextField(
                 state = firstNameState,
                 label = { Text(stringResource(R.string.first_name)) },
-                modifier = Modifier.weight(1f),
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Words,
+                    imeAction = ImeAction.Next
+                ),
+                modifier = Modifier.weight(1f)
             )
             OutlinedTextField(
                 state = lastNameState,
                 label = { Text(stringResource(R.string.last_name)) },
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Words,
+                    imeAction = ImeAction.Next
+                ),
                 modifier = Modifier.weight(1f)
             )
         }
         OutlinedTextField(
             state = emailState,
             label = { Text(stringResource(R.string.email)) },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Next
+            ),
             modifier = Modifier.fillMaxWidth().padding(top = 8.dp)
         )
         OutlinedTextField(
             state = passwordState,
             label = { Text(stringResource(R.string.password)) },
             placeholder = { Text(stringResource(R.string.at_least_8_characters))},
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password ,
+                imeAction = ImeAction.Next
+            ),
             modifier = Modifier.fillMaxWidth().padding(top = 8.dp)
         )
         OutlinedTextField(
             state = confirmPasswordState,
             label = { Text(stringResource(R.string.confirm_password)) },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Done
+            ),
             modifier = Modifier.fillMaxWidth().padding(top = 8.dp)
         )
         Button(

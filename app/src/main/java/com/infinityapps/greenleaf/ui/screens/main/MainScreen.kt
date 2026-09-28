@@ -1,4 +1,4 @@
-package com.infinityapps.greenleaf.ui.screens
+package com.infinityapps.greenleaf.ui.screens.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,6 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.AndroidUiModes.UI_MODE_NIGHT_YES
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.infinityapps.greenleaf.ui.provider.ViewModelProvider
 import com.infinityapps.greenleaf.ui.theme.GreenLeafTheme
 
 
@@ -28,7 +30,8 @@ data class User(
 @Composable
 fun MainScreen(
     user: User,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: MainScreenViewModel = viewModel(factory = ViewModelProvider.Factory)
 ) {
     Column(
         modifier = modifier.fillMaxSize().padding(24.dp),
@@ -47,7 +50,7 @@ fun MainScreen(
         )
         Spacer(modifier=modifier.weight(1f))
         Button(
-            onClick = {}
+            onClick = { viewModel.signOut() }
         ) {
             Text("Sign Out")
         }

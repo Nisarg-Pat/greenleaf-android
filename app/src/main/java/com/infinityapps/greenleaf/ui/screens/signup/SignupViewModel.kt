@@ -1,6 +1,8 @@
 package com.infinityapps.greenleaf.ui.screens.signup
 
 import androidx.lifecycle.ViewModel
+import com.infinityapps.greenleaf.data.auth.AuthRepository
+import com.infinityapps.greenleaf.data.auth.AuthUser
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +17,9 @@ data class SignupUiState(
 )
 
 
-class SignupViewModel: ViewModel() {
+class SignupViewModel(
+    val authRepository: AuthRepository
+): ViewModel() {
     private val _uiState = MutableStateFlow(SignupUiState())
     val uiState: StateFlow<SignupUiState> = _uiState.asStateFlow()
 
@@ -30,6 +34,6 @@ class SignupViewModel: ViewModel() {
     fun onConfirmPasswordChange(confirmPassword: String) = _uiState.update { it.copy(confirmPassword = confirmPassword) }
 
     fun onCreateAccountClick() {
-
+        authRepository.signUp(authUser = AuthUser(firstName = uiState.value.firstName, lastName = uiState.value.lastName, email = uiState.value.email))
     }
 }

@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -32,16 +31,17 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.infinityapps.greenleaf.R
+import com.infinityapps.greenleaf.ui.provider.ViewModelProvider
 import com.infinityapps.greenleaf.ui.theme.GreenLeafTheme
 
 @Composable
 fun SignupScreen(
     modifier: Modifier = Modifier,
-    viewModel: SignupViewModel = viewModel()
+    viewModel: SignupViewModel = viewModel(factory = ViewModelProvider.Factory)
 ) {
     val uiState = viewModel.uiState.collectAsStateWithLifecycle()
 
-    SignUpContent(
+    SignUpComponent(
         state = uiState.value,
         onFirstNameChanged = viewModel::onFirstNameChange,
         onLastNameChanged = viewModel::onLastNameChange,
@@ -55,7 +55,7 @@ fun SignupScreen(
 }
 
 @Composable
-fun SignUpContent(
+fun SignUpComponent(
     state: SignupUiState,
     onFirstNameChanged: (String) -> Unit,
     onLastNameChanged: (String) -> Unit,
@@ -184,7 +184,7 @@ fun SignUpContent(
 fun SignupScreenPreview() {
     GreenLeafTheme {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            SignUpContent(
+            SignUpComponent(
                 modifier = Modifier.padding(innerPadding),
                 state = SignupUiState(),
                 onFirstNameChanged = {},

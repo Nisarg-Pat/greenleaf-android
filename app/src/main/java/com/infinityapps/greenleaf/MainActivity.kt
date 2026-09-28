@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.infinityapps.greenleaf.ui.screens.signup.SignupScreen
 import com.infinityapps.greenleaf.ui.theme.GreenLeafTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             GreenLeafTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SignupScreen(modifier = Modifier.padding(innerPadding))
+                    GreenleafApp(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
